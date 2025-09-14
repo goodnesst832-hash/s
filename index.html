@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بوابة مبادرة أجيال تنكراش</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #FFD700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
 
+  .header {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid #FFD700;
+    font-size: 1em;
+    color: #FFD700;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 2px 2px 8px #000;
+  }
+
+  .logo {
+    width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .join-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .join-text {
+    font-size: 1.5em;
+    color: #000;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .toggle-btn {
+    font-size: 1.5em;
+    padding: 15px 40px;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .toggle-btn:hover {
+    background-color: #e6c200;
+  }
+
+  .form-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .form-container form {
+    width: 95%;
+    max-width: 700px;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 50px #FFD700;
+    color: #000;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-size: 1.2em;
+    color: #000;
+  }
+
+  select, input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    font-size: 1em;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  button.submit-btn {
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    background-color: #FFD700;
+    color: #000;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  button.submit-btn:hover {
+    background-color: #e6c200;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+  }
+
+  .about {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #FFD700;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 10px;
+    max-width: 800px;
+    line-height: 1.8;
+    text-align: justify;
+    box-shadow: 0 0 20px #FFD700;
+    font-size: 1.1em;
+  }
+
+  .option-form {
+    display: none;
+    margin-top: 15px;
+  }
+
+  .contact-btn {
+    margin-top: 20px;
+    padding: 8px 25px;
+    font-size: 1em;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .contact-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .contact-numbers {
+    display: none;
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">مبادرة أجيال تنكَّراش</div>
+
+<h1>أهلا بكم في بوابة المبادرة</h1>
+
+<img src="https://i.ibb.co/ymKS7S5g/1757820255227.jpg" alt="شعار المبادرة" class="logo">
+
+<div class="join-container">
+  <div class="join-text">اضغط هنا للانضمام إلى المجتمع</div>
+  <button class="toggle-btn" id="joinBtn">الانضمام</button>
+</div>
+
+<div class="about">
+  <strong>نبذة عن مبادرة أجيال تنكَّراش:</strong><br><br>
+  مبادرة أجيال تنكَّراش هي مشروع مجتمعي يهدف إلى تقريب الأهل من أبنائهم وغرس القيم الدينية والأخلاقية في نفوس الأجيال الجديدة.  
+  تعمل المبادرة على تعزيز الروابط العائلية والمعرفية من خلال تنظيم برامج تعليمية وترفيهية.  
+  تقدم المبادرة مسابقات متنوعة تشمل القرآن الكريم، المسابقات الأدبية، والبطولات الرياضية.  
+  كما تهتم بتكريم الفائزين في المسابقات الوطنية وتقديم الشكر والتقدير لهم.  
+  تتيح المبادرة الفرصة لجميع المشاركين لتطوير مهاراتهم وتنمية قدراتهم الشخصية والاجتماعية.  
+  تركز المبادرة على الحفاظ على المستوى التعليمي والثقافي، مع العمل المستمر على رفعه وتطويره.  
+  كما تهدف إلى بناء مجتمع متعاون ومتفاعل، يعزز روح الأخوة والانتماء بين الأجيال.  
+  وبذلك تصبح مبادرة أجيال تنكَّراش منصة حقيقية للنمو والتعلم والترابط الاجتماعي والديني.
+</div>
+
+<div class="form-container" id="mainForm">
+  <button class="close-btn" id="closeForm">×</button>
+  <form>
+    <label for="option">اختر نوع المشاركة:</label>
+    <select id="option" name="option" required onchange="showOptionForm(this.value)">
+      <option value="">-- اختر --</option>
+      <option value="sports">البطولة الرياضية</option>
+      <option value="literary">مسابقة الأدبية</option>
+      <option value="quran">مسابقة القرآن الكريم</option>
+      <option value="other">أخرى</option>
+    </select>
+
+    <label for="fullname">الاسم الكامل:</label>
+    <input type="text" id="fullname" name="fullname" placeholder="اكتب اسمك الكامل" required>
+
+    <label for="number">الرقم (ابدأ بـ 222+):</label>
+    <input type="text" id="number" name="number" placeholder="222+" required pattern="^222[0-9]{5}$" title="أدخل رقم موريتاني صحيح يبدأ بـ 222">
+
+    <div class="option-form" id="sports-form">
+      <label for="team">اسم الفريق / النادي:</label>
+      <input type="text" id="team" name="team" placeholder="اكتب اسم الفريق" required>
+    </div>
+
+    <div class="option-form" id="literary-form">
+      <label for="essay-title">عنوان المشاركة الأدبية:</label>
+      <input type="text" id="essay-title" name="essay-title" placeholder="اكتب عنوان مشاركتك" required>
+    </div>
+
+    <div class="option-form" id="quran-form">
+      <label for="surah">اسم السورة أو الجزء:</label>
+      <input type="text" id="surah" name="surah" placeholder="اكتب السورة أو الجزء" required>
+    </div>
+
+    <div class="option-form" id="other-form">
+      <label for="other-desc">صف مشاركتك:</label>
+      <textarea id="other-desc" name="other-desc" placeholder="صف مشاركتك" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">إرسال</button>
+  </form>
+</div>
+
+<!-- تواصل معنا -->
+<button class="contact-btn" id="contactBtn">تواصل معنا</button>
+<div class="contact-numbers" id="contactNumbers">
+  20878531<br>34344936
+</div>
+
+<script>
+  // فتح وإغلاق نموذج الانضمام
+  const joinBtn = document.getElementById('joinBtn');
+  const closeForm = document.getElementById('closeForm');
+  const mainForm = document.getElementById('mainForm');
+
+  joinBtn.addEventListener('click', () => {
+    mainForm.style.display = 'flex';
+  });
+
+  closeForm.addEventListener('click', () => {
+    mainForm.style.display = 'none';
+  });
+
+  // عرض حقول المشاركة الخاصة بالنوع المحدد
+  function showOptionForm(value) {
+    const forms = document.querySelectorAll('.option-form');
+    forms.forEach(f => f.style.display = 'none');
+
+    if(value === 'sports') document.getElementById('sports-form').style.display = 'block';
+    if(value === 'literary') document.getElementById('literary-form').style.display = 'block';
+    if(value === 'quran') document.getElementById('quran-form').style.display = 'block';
+    if(value === 'other') document.getElementById('other-form').style.display = 'block';
+  }
+
+  // تواصل معنا
+  const contactBtn = document.getElementById('contactBtn');
+  const contactNumbers = document.getElementById('contactNumbers');
+
+  contactBtn.addEventListener('click', () => {
+    if(contactNumbers.style.display === 'none' || contactNumbers.style.display === '') {
+      contactNumbers.style.display = 'block';
+    } else {
+      contactNumbers.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
