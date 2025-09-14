@@ -75,7 +75,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.7); /* خلفية داكنة نصف شفافة */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -87,11 +87,11 @@
   .form-container form {
     width: 95%;
     max-width: 700px;
-    background-color: #FFFFFF;
+    background-color: #FFFFFF; /* خلفية بيضاء ناصعة */
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 50px #FFD700;
-    color: #000;
+    box-shadow: 0 0 50px #FFD700; /* ظل ذهبي واضح */
+    color: #000; /* نص أسود للوضوح */
   }
 
   label {
@@ -165,30 +165,6 @@
     display: none;
     margin-top: 15px;
   }
-
-  .contact-btn {
-    margin-top: 20px;
-    padding: 8px 25px;
-    font-size: 1em;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  .contact-btn:hover {
-    background-color: #0056b3;
-  }
-
-  .contact-numbers {
-    display: none;
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #000;
-    font-weight: bold;
-    text-align: center;
-  }
 </style>
 </head>
 <body>
@@ -199,9 +175,10 @@
 
 <img src="https://i.ibb.co/ymKS7S5g/1757820255227.jpg" alt="شعار المبادرة" class="logo">
 
+<!-- نص وزر الانضمام أسفل الصورة مباشرة -->
 <div class="join-container">
   <div class="join-text">اضغط هنا للانضمام إلى المجتمع</div>
-  <button class="toggle-btn" id="joinBtn">الانضمام</button>
+  <button class="toggle-btn" onclick="toggleForm()">الانضمام</button>
 </div>
 
 <div class="about">
@@ -216,8 +193,9 @@
   وبذلك تصبح مبادرة أجيال تنكَّراش منصة حقيقية للنمو والتعلم والترابط الاجتماعي والديني.
 </div>
 
-<div class="form-container" id="mainForm">
-  <button class="close-btn" id="closeForm">×</button>
+<!-- النموذج fullscreen -->
+<div class="form-container" id="main-form">
+  <button class="close-btn" onclick="toggleForm()">×</button>
   <form>
     <label for="option">اختر نوع المشاركة:</label>
     <select id="option" name="option" required onchange="showOptionForm(this.value)">
@@ -258,27 +236,12 @@
   </form>
 </div>
 
-<!-- تواصل معنا -->
-<button class="contact-btn" id="contactBtn">تواصل معنا</button>
-<div class="contact-numbers" id="contactNumbers">
-  20878531<br>34344936
-</div>
-
 <script>
-  // فتح وإغلاق نموذج الانضمام
-  const joinBtn = document.getElementById('joinBtn');
-  const closeForm = document.getElementById('closeForm');
-  const mainForm = document.getElementById('mainForm');
+  function toggleForm() {
+    const form = document.getElementById('main-form');
+    form.style.display = (form.style.display === 'flex') ? 'none' : 'flex';
+  }
 
-  joinBtn.addEventListener('click', () => {
-    mainForm.style.display = 'flex';
-  });
-
-  closeForm.addEventListener('click', () => {
-    mainForm.style.display = 'none';
-  });
-
-  // عرض حقول المشاركة الخاصة بالنوع المحدد
   function showOptionForm(value) {
     const forms = document.querySelectorAll('.option-form');
     forms.forEach(f => f.style.display = 'none');
@@ -288,18 +251,6 @@
     if(value === 'quran') document.getElementById('quran-form').style.display = 'block';
     if(value === 'other') document.getElementById('other-form').style.display = 'block';
   }
-
-  // تواصل معنا
-  const contactBtn = document.getElementById('contactBtn');
-  const contactNumbers = document.getElementById('contactNumbers');
-
-  contactBtn.addEventListener('click', () => {
-    if(contactNumbers.style.display === 'none' || contactNumbers.style.display === '') {
-      contactNumbers.style.display = 'block';
-    } else {
-      contactNumbers.style.display = 'none';
-    }
-  });
 </script>
 
 </body>
